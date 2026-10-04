@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Interactive JavaScript practice: product catalog, student records, and sentence analysis.">
+
+  <title>Day 3 Workspace | Zeeshan Fida</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home">
+        <span class="brand-icon">Z.</span>
+        <span>Zeeshan Fida<span class="brand-dot">.</span></span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-controls="main-navigation"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="main-navigation" aria-label="Main navigation">
+        <a href="#products">Products</a>
+        <a href="#students">Students</a>
+        <a href="#sentences">Sentences</a>
+        <span class="nav-badge">DAY 03</span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">TECH SG STUDIO / JAVASCRIPT PRACTICE</p>
+        <h1>Work with data.<br><span>Build better logic.</span></h1>
+        <p class="hero-description">
+          Three interactive tools to explore arrays, objects,
+          functions, and string methods.
+        </p>
+
+        <a class="button" href="#products">Explore workspace ↗</a>
+      </div>
+
+      <aside class="hero-summary">
+        <p class="eyebrow">YOUR DAY 3 WORKSPACE</p>
+        <h2>Three tasks. One place.</h2>
+
+        <div class="summary-item">
+          <span>01</span>
+          <div>
+            <strong>Product Catalog</strong>
+            <p>Filter, sort, and summarize</p>
+          </div>
+        </div>
+
+        <div class="summary-item">
+          <span>02</span>
+          <div>
+            <strong>Student Records</strong>
+            <p>Add, find, and compare</p>
+          </div>
+        </div>
+
+        <div class="summary-item">
+          <span>03</span>
+          <div>
+            <strong>Sentence Analyzer</strong>
+            <p>Explore words and patterns</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Task 1: Product Catalog -->
+    <section class="workspace" id="products" aria-labelledby="products-title">
+      <div class="section-heading">
+        <span class="task-number">01</span>
+        <div>
+          <p class="eyebrow">PRODUCT CATALOG</p>
+          <h2 id="products-title">A clearer view of your inventory.</h2>
+          <p>Explore eight products using JavaScript array methods.</p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat">
+          <span>Total products</span>
+          <strong id="product-count">0</strong>
+        </article>
+
+        <article class="stat">
+          <span>In stock</span>
+          <strong id="stock-count">0</strong>
+        </article>
+
+        <article class="stat">
+          <span>Total inventory value</span>
+          <strong id="inventory-value">Rs. 0</strong>
+        </article>
+      </div>
+
+      <p class="helper">
+        Inventory value is the sum of all listed prices, assuming one unit
+        per product because quantities are not provided.
+      </p>
+
+      <div class="toolbar">
+        <div class="filter-controls">
+          <label for="product-view">Product view</label>
+          <select id="product-view">
+            <option value="all">All products</option>
+            <option value="stock">In-stock products</option>
+            <option value="descending">Price: high to low</option>
+            <option value="names">Product names only</option>
+          </select>
+        </div>
+
+        <p class="view-count" id="product-view-count" aria-live="polite"></p>
+      </div>
+
+      <div class="product-grid" id="product-list"></div>
+
+      <div class="detail-grid">
+        <article class="insight">
+          <p class="eyebrow">LOWEST PRICE</p>
+          <h3 id="cheapest-name"></h3>
+          <p class="insight-value" id="cheapest-price"></p>
+        </article>
+
+        <article class="insight">
+          <p class="eyebrow">HIGHEST PRICE</p>
+          <h3 id="expensive-name"></h3>
+          <p class="insight-value" id="expensive-price"></p>
+        </article>
+      </div>
+
+      <div class="bonus-panel">
+        <div class="panel-heading">
+          <h3>Products by category</h3>
+          <span class="small-badge">BONUS · REDUCE()</span>
+        </div>
+
+        <div class="category-list" id="category-counts"></div>
+      </div>
+    </section>
+
+    <!-- Task 2: Student Record Manager -->
+    <section class="workspace" id="students" aria-labelledby="students-title">
+      <div class="section-heading">
+        <span class="task-number">02</span>
+        <div>
+          <p class="eyebrow">STUDENT RECORD MANAGER</p>
+          <h2 id="students-title">Every student. Every result.</h2>
+          <p>Add student records and explore their performance.</p>
+        </div>
+      </div>
+
+      <div class="student-layout">
+        <form class="form-panel" id="student-form">
+          <h3>Add a student</h3>
+          <p class="helper">Enter marks between 0 and 100.</p>
+
+          <label for="student-id">Student ID</label>
+          <input id="student-id" type="number"
+            min="1" step="1" placeholder="Example: 105" required>
+
+          <label for="student-name">Full name</label>
+          <input id="student-name" type="text"
+            maxlength="80" placeholder="Enter student name" required>
+
+          <label for="student-marks">Subject marks</label>
+          <input id="student-marks" type="text"
+            maxlength="250" placeholder="Example: 80, 75, 90" required>
+
+          <p class="helper">Separate marks with commas.</p>
+
+          <button class="button" type="submit">Add student +</button>
+
+          <p class="feedback" id="student-feedback"
+            role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="student-overview">
+          <div class="stats-grid">
+            <article class="stat">
+              <span>Students</span>
+              <strong id="student-count">0</strong>
+            </article>
+
+            <article class="stat">
+              <span>Passed</span>
+              <strong id="passed-count">0</strong>
+            </article>
+
+            <article class="stat">
+              <span>Class average</span>
+              <strong id="class-average">0%</strong>
+            </article>
+          </div>
+
+          <article class="topper-card">
+            <p class="eyebrow">TOP PERFORMER</p>
+            <h3 id="topper-name"></h3>
+            <p id="topper-average"></p>
+          </article>
+
+          <form class="search-form" id="student-search-form">
+            <label for="search-id">Find a student by ID</label>
+            <div class="search-row">
+              <input id="search-id" type="number"
+                min="1" step="1" placeholder="Enter ID" required>
+              <button class="button secondary" type="submit">Find</button>
+            </div>
+          </form>
+
+          <p class="search-result" id="student-search-result"
+            aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="filter-controls">
+          <label for="student-view">Record view</label>
+          <select id="student-view">
+            <option value="all">All students</option>
+            <option value="passed">Passed students</option>
+          </select>
+        </div>
+
+        <button class="text-button" id="log-students" type="button">
+          Log records to console ↗
+        </button>
+      </div>
+
+      <p class="helper">
+        Practice pass rule: every subject must have at least 33 marks.
+        The screenshot does not specify a pass threshold.
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <caption class="sr-only">Student performance records</caption>
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Student</th>
+              <th scope="col">Marks</th>
+              <th scope="col">Average</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody id="student-table"></tbody>
+        </table>
+      </div>
+
+      <p class="feedback" id="console-feedback" role="status"></p>
+    </section>
+
+    <!-- Task 3: Sentence Analyzer -->
+    <section class="workspace" id="sentences" aria-labelledby="sentences-title">
+      <div class="section-heading">
+        <span class="task-number">03</span>
+        <div>
+          <p class="eyebrow">SENTENCE ANALYZER</p>
+          <h2 id="sentences-title">Discover more in every sentence.</h2>
+          <p>Count words, change capitalization, and find repeated words.</p>
+        </div>
+      </div>
+
+      <form id="sentence-form">
+        <label for="sentence-input">Your sentence</label>
+        <textarea id="sentence-input" rows="4" maxlength="5000"
+          placeholder="Write a sentence to analyze..." required>JavaScript makes learning fun and learning builds confidence.</textarea>
+
+        <div class="sentence-actions">
+          <p class="helper">
+            Word counting ignores punctuation and letter case.
+          </p>
+          <button class="button" type="submit">Analyze sentence ↗</button>
+        </div>
+
+        <p class="feedback" id="sentence-feedback"
+          role="status" aria-live="polite"></p>
+      </form>
+
+      <div id="sentence-output" aria-live="polite">
+        <div class="detail-grid">
+          <article class="insight">
+            <p class="eyebrow">WORD COUNT</p>
+            <strong class="large-value" id="word-count">0</strong>
+          </article>
+
+          <article class="insight">
+            <p class="eyebrow">LONGEST WORD</p>
+            <h3 id="longest-word">—</h3>
+            <p class="helper" id="longest-length"></p>
+          </article>
+        </div>
+
+        <div class="output-block">
+          <p class="eyebrow">FIRST LETTER CAPITALIZED</p>
+          <p id="capitalized-sentence"></p>
+        </div>
+
+        <div class="output-block">
+          <p class="eyebrow">REVERSED WORD ORDER</p>
+          <p id="reversed-sentence"></p>
+        </div>
+
+        <div class="bonus-panel">
+          <div class="panel-heading">
+            <h3>Word frequency</h3>
+            <span class="small-badge">BONUS · OBJECT COUNTS</span>
+          </div>
+
+          <div class="frequency-list" id="word-frequency"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <a class="brand" href="#home">Zeeshan<span class="brand-dot">.</span></a>
+        <p>Learning by building, one task at a time.</p>
+      </div>
+
+      <div class="footer-meta">
+        <p>Tech SG Studio · Day 03</p>
+        <a href="#home">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
